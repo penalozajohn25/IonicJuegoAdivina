@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Juego Adivina
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+<ion-input 
+  type="number"
+  min="1" 
+  max="10" 
+  [(ngModel)]="num" 
+  placeholder="Ingrese un numero entre 1 y 100">
+</ion-input>
+
+<p *ngIf="mayorMenor || mayorMenor!='igual'">el número que buscas es {{mayorMenor}}</p>
+
+<ion-button 
+ *ngIf="resultado=='partida'" 
+ color="primary" 
+ (click)="compruebaNumero()">Adivina
+</ion-button>
+
+<ion-button 
+ *ngIf="resultado=='ganador' || resultado=='perdedor'" 
+ color="secondary" 
+ (click)="reiniciar()">Reiniciar
+</ion-button>
+
+<ion-card *ngIf="resultado=='ganador'">
+  <ion-card-header>
+     felicitaciones
+  </ion-card-header>
+
+  <ion-card-content>
+     el numero secreto es {{num}}
+  </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="resultado=='perdedor'">
+  <ion-card-header>
+     Lo siento
+  </ion-card-header>
+
+  <ion-card-content>
+     has superado el límite de intentos
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>
